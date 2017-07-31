@@ -1,0 +1,17 @@
+<div id="check_device_container">
+	<i class="loading fa fa-cog fa-spin"></i>
+</div>
+
+<script type="text/javascript">
+	Homey.emit('get_device', function (err, pairingDevice) {
+		console.log('got device', err, pairingDevice, String(err), String(pairingDevice));
+		Homey.emit('get_device', (pairingDevice || {}).data, function (err, device) {
+			console.log('got devicee', err, pairingDevice, String(err), String(device));
+			if (device) {
+				$('#check_device_container').html(__(options.device_exists_message || "ir_generator.error.device_exists"));
+				return;
+			}
+			Homey.nextView();
+		})
+	});
+</script>

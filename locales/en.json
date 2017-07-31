@@ -160,12 +160,32 @@
 			"ZOOM_IN": "Zoom In\u0000",
 			"ZOOM_OUT": "Zoom Out\u0000",
 			"FORMAT_169": "Format: 16:9\u0000",
-			"FORMAT_43": "Format: 4:3\u0000"
+			"FORMAT_43": "Format: 4:3\u0000",
+			"MENU_POP_UP": "Pop-up Menu\u0000",
+			"AUDIO": "Audio\u0000",
+			"SUBTITLE": "Subtitle\u0000",
+			"FORWARD/NEXT": "Forward/Next\u0000",
+			"INPUT_OPTICAL/TV_SOUND": "Input: Optical/TV Sound\u0000",
+			"MENU_DISC": "Disk Menu\u0000",
+			"MODE_3D_SOUND": "Mode: 3D Sound\u0000",
+			"MODE_SCROLL": "Mode: Scroll\u0000",
+			"MUSIC_ID": "Music ID\u0000",
+			"REPEAT": "Repeat\u0000",
+			"REVERSE/PREVIOUS": "Reverse/Previous\u0000",
+			"SPEAKER_LEVEL": "Speaker Level\u0000",
+			"TUNER_PRESET_DOWN": "Tuner Preset Down\u0000",
+			"TUNER_PRESET_UP": "Tuner Preset Up\u0000",
+			"TUNER_TUNE_DOWN": "Tuner Tune Down\u0000",
+			"TUNER_TUNE_UP": "Tuner Tune Down\u0000"
 		}
 	},
 	"views": {
 		"generic_done": {
 			"title": "Adding device!\u0000"
+		},
+		"generic_check_device": {
+			"device_exists_message": "Device already exists. Please close the pairing wizard.\u0000"
 		}
-	}
+	},
+	"lg_hometheather": "LG HomeTheather BH Series"
 }

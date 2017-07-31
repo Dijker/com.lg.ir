@@ -159,12 +159,32 @@
 			"ZOOM_IN": "Zoom In\u0000",
 			"ZOOM_OUT": "Zoom Out\u0000",
 			"FORMAT_169": null,
-			"FORMAT_43": null
+			"FORMAT_43": null,
+			"MENU_POP_UP": null,
+			"AUDIO": null,
+			"SUBTITLE": null,
+			"FORWARD/NEXT": "Vooruit/Volgende\u0000",
+			"INPUT_OPTICAL/TV_SOUND": "Input: Optisch/TV Geluid\u0000",
+			"MENU_DISC": "Disk Menu\u0000",
+			"MODE_3D_SOUND": "Modus: 3D Geluid\u0000",
+			"MODE_SCROLL": "Modus: Scroll\u0000",
+			"MUSIC_ID": "Music ID\u0000",
+			"REPEAT": "Herhaal\u0000",
+			"REVERSE/PREVIOUS": "Achteruit/Vorige\u0000",
+			"SPEAKER_LEVEL": "Speaker Niveau\u0000",
+			"TUNER_PRESET_DOWN": "Tuner Omlaag\u0000",
+			"TUNER_PRESET_UP": "Tuner Omhoog\u0000",
+			"TUNER_TUNE_DOWN": "Tuner Geluid Omlaag\u0000",
+			"TUNER_TUNE_UP": "Tuner Geluid Omhoog\u0000"
 		}
 	},
 	"views": {
 		"generic_done": {
 			"title": "Apparaat wordt toegevoegd!\u0000"
+		},
+		"generic_check_device": {
+			"device_exists_message": "Apparaat bestaat al. Sluit aub. de pair wizard.\u0000"
 		}
-	}
+	},
+	"lg_hometheather": "LG HomeCinema BH Serie"
 }

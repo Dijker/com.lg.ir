@@ -132,7 +132,7 @@ module.exports = class Driver extends BaseDriver {
 			this.logger.verbose(
 				'Driver:pair->get_device(data, callback)+this.pairingDevice', data, callback, this.pairingDevice
 			);
-			callback(null, this.pairingDevice);
+			callback(null, data && data.id ? this.getDevice(data.id) : this.pairingDevice);
 		});
 
 		socket.on('program', (data, callback) => {

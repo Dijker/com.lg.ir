@@ -3,7 +3,7 @@
 const config = {
 	signal: 'lg',
 	actions: [{
-		id: 'lg_tv:send_cmd',
+		id: 'lg_hometheather:send_cmd',
 		title: 'ir_generator.flow.send_cmd',
 		args: [{
 			name: 'cmd',
@@ -11,10 +11,10 @@ const config = {
 		}, {
 			name: 'device',
 			type: 'device',
-			filter: 'driver_id=lg_tv'
+			filter: 'driver_id=lg_hometheather'
 		}]
 	}, {
-		id: 'lg_tv:send_cmd_number',
+		id: 'lg_hometheather:send_cmd_number',
 		title: 'ir_generator.flow.send_cmd_number',
 		args: [{
 			name: 'number',
@@ -24,7 +24,7 @@ const config = {
 		}, {
 			name: 'device',
 			type: 'device',
-			filter: 'driver_id=lg_tv'
+			filter: 'driver_id=lg_hometheather'
 		}]
 	}],
 	pair: {
@@ -56,25 +56,17 @@ const config = {
 		small: '../../ir_generator/assets/images/small.jpg',
 		large: '../../ir_generator/assets/images/large.jpg'
 	},
-	id: 'lg_tv',
-	name: 'lg_tv',
-	class: 'tv',
+	id: 'lg_hometheather',
+	name: 'lg_hometheather',
+	class: 'amplifier',
 	icon: '../../ir_generator/assets/remote.svg',
-	cmdType: 'tv',
-	capabilities: ['onoff',
-		'volume_mute',
-		'volume_up',
-		'volume_down',
-		'channel_up',
-		'channel_down'
-	],
+	cmdType: 'hometheather',
+	capabilities: ['onoff', 'volume_mute', 'volume_up', 'volume_down'],
 	capabilityToCommandMap: {
 		onoff: ['POWER_ON', 'POWER_OFF', 'POWER_TOGGLE'],
 		volume_mute: 'MUTE_TOGGLE',
 		volume_up: 'VOLUME_UP',
-		volume_down: 'VOLUME_DOWN',
-		channel_up: 'CHANNEL_UP',
-		channel_down: 'CHANNEL_DOWN'
+		volume_down: 'VOLUME_DOWN'
 	},
 	driver: '../lib/ir/driver',
 	signalDefinition: {

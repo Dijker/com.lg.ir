@@ -28,7 +28,7 @@ module.exports = {
 			],
 		},
 		list_devices: {
-			template: '../433/pair/default/list_devices.html',
+			template: '../pair/default/list_devices.html',
 			options: {
 				loading_title: {
 					required: false,
@@ -51,7 +51,7 @@ module.exports = {
 			],
 		},
 		list_devices_singular: {
-			template: '../433/pair/default/list_devices_singular.html',
+			template: '../pair/default/list_devices_singular.html',
 			options: {
 				loading_title: {
 					required: false,
@@ -74,28 +74,28 @@ module.exports = {
 			],
 		},
 		add_devices: {
-			template: '../433/pair/default/add_devices.html',
+			template: '../pair/default/add_devices.html',
 			options: {
 				next: false,
 				previous: false,
 			},
 		},
 		choose_slave: {
-			template: '../433/pair/default/choose_slave.html',
+			template: '../pair/default/choose_slave.html',
 			options: {
 				next: true,
 				previous: true,
 			},
 		},
 		done: {
-			template: '../433/pair/default/done.html',
+			template: '../pair/default/done.html',
 			options: {
 				next: false,
 				previous: false,
 			},
 		},
 		generic_info: {
-			template: '../433/pair/info.html',
+			template: '../pair/info.html',
 			options: {
 				title: {
 					default: 'views.generic_info.title',
@@ -123,7 +123,7 @@ module.exports = {
 		},
 		generic_imitate: {
 			extends: 'generic_test_remote',
-			template: '../433/pair/imitate.html',
+			template: '../pair/imitate.html',
 			options: {
 				title: {
 					default: 'views.generic_imitate.title',
@@ -135,7 +135,7 @@ module.exports = {
 			},
 		},
 		generic_codewheel: {
-			template: '../433/pair/codewheel.html',
+			template: '../pair/codewheel.html',
 			options: {
 				title: {
 					default: 'views.generic_codewheel.title',
@@ -160,7 +160,7 @@ module.exports = {
 			],
 		},
 		generic_dipswitch: {
-			template: '../433/pair/dipswitch.html',
+			template: '../pair/dipswitch.html',
 			options: {
 				title: {
 					default: 'views.generic_dipswitch.title',
@@ -186,7 +186,7 @@ module.exports = {
 			],
 		},
 		generic_test_remote: {
-			template: '../433/pair/test_remote.html',
+			template: '../pair/test_remote.html',
 			options: {
 				title: {
 					default: 'views.generic_test_remote.title',
@@ -217,7 +217,7 @@ module.exports = {
 		},
 		generic_program: {
 			extends: 'generic_test_remote',
-			template: '../433/pair/program.html',
+			template: '../pair/program.html',
 			options: {
 				title: {
 					default: 'views.generic_program.title',
@@ -234,7 +234,7 @@ module.exports = {
 		},
 		generic_test_switch: {
 			extends: 'generic_test_remote',
-			template: '../433/pair/test_switch.html',
+			template: '../pair/test_switch.html',
 			options: {
 				title: {
 					default: 'views.generic_test_switch.title',
@@ -260,7 +260,7 @@ module.exports = {
 		},
 		generic_test_button: {
 			extends: 'generic_test_switch',
-			template: '../433/pair/test_button.html',
+			template: '../pair/test_button.html',
 			options: {
 				title: {
 					default: 'views.generic_test_button.title',
@@ -294,8 +294,19 @@ module.exports = {
 				},
 			},
 		},
+		generic_check_device: {
+			template: '../pair/check_device.html',
+			options: {
+				title: {
+					default: 'views.generic_done.title',
+				},
+				device_exists_message: {
+					default: 'views.generic_check_device.device_exists_message',
+				},
+			},
+		},
 		generic_done: {
-			template: '../433/pair/done.html',
+			template: '../pair/done.html',
 			options: {
 				title: {
 					default: 'views.generic_done.title',
@@ -303,7 +314,7 @@ module.exports = {
 			},
 		},
 		generic_choice: {
-			template: '../433/pair/choice.html',
+			template: '../pair/choice.html',
 			options: {
 				title: {
 					default: 'views.generic_choice.title',
