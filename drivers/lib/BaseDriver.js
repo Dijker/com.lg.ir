@@ -631,7 +631,10 @@ module.exports = class BaseDriver extends EventEmitter {
 		return {
 			name: __(this.config.name),
 			data: Object.assign(
-				{ overridden: false },
+				{
+					overridden: false,
+					id: this.config.id,
+				},
 				data,
 				{ driver_id: this.config.id },
 				typeObj
@@ -780,8 +783,11 @@ module.exports = class BaseDriver extends EventEmitter {
 
 	getCmdsForDevice(device) {
 		device = this.getDevice(device);
-		const cacheKey = `${device.cmdType && device.cmdType !== 'default' ? device.cmdType : ''
-			}$~$${device.cmdSubType && device.cmdSubType !== 'default' ? device.cmdSubType : ''}`;
+		const typeDef = Object.assign({}, device, device.metadata);
+		const cmdType = typeDef.hasOwnProperty('cmdType') ? typeDef.cmdType : this.config.cmdType;
+		const cmdSubType = typeDef.hasOwnProperty('cmdSubType') ? typeDef.cmdSubType : this.config.cmdSubType;
+		const cacheKey = `${cmdType && cmdType !== 'default' ? cmdType : ''
+			}$~$${cmdSubType && cmdSubType !== 'default' ? cmdSubType : ''}`;
 		if (!this.deviceCmdCache.has(cacheKey)) {
 			const resultMap = new Map();
 			const addCmds = (obj) => {
@@ -793,13 +799,13 @@ module.exports = class BaseDriver extends EventEmitter {
 			};
 
 			addCmds(this.cmdStructure);
-			if (device.cmdSubType && device.cmdSubType !== 'default') {
-				addCmds(this.cmdStructure.subTypes[device.cmdSubType]);
+			if (cmdSubType && cmdSubType !== 'default') {
+				addCmds(this.cmdStructure.subTypes[cmdSubType]);
 			}
-			if (device.cmdType && device.cmdType !== 'default') {
-				addCmds(this.cmdStructure.types[device.cmdType]);
-				if (device.cmdSubType && device.cmdSubType !== 'default') {
-					addCmds(this.cmdStructure.types[device.cmdType].subTypes[device.cmdSubType]);
+			if (cmdType && cmdType !== 'default') {
+				addCmds(this.cmdStructure.types[cmdType]);
+				if (cmdSubType && cmdSubType !== 'default') {
+					addCmds(this.cmdStructure.types[cmdType].subTypes[cmdSubType]);
 				}
 			}
 			this.deviceCmdCache.set(cacheKey, resultMap);
@@ -870,7 +876,7 @@ module.exports = class BaseDriver extends EventEmitter {
 
 	onTriggerCmdReceivedAutocomplete(callback, args) {
 		this.logger.silly('Driver:onTriggerCmdReceivedAutocomplete(callback, args, state)', callback, args);
-		const device = this.getDevice(args.device);
+		const device = this.getDevice(args.args.device);
 		if (device) {
 			const cmdMap = this.getCmdsForDevice(device);
 			const resultList = [];

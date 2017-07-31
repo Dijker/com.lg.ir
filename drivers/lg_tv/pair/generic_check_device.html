@@ -1,0 +1,51 @@
+<script>
+var options = {
+	template: '../lib/pair/check_device.html',
+	id: 'generic_check_device',
+	title: 'views.generic_done.title',
+	device_exists_message: 'views.generic_check_device.device_exists_message'
+};
+Homey.setTitle(__(options.title || ''));
+Homey.emit('init', options.id);
+Homey.on('show_view', function(viewId){
+	Homey.showView(viewId);
+});
+Homey.on('close', function(){
+	Homey.close();
+});
+Homey.on('nextView', function(viewsIds){
+	var viewIndex = viewsIds.indexOf(options.id) + 1;
+	if(viewIndex > 0 && viewIndex < viewsIds.length){
+		Homey.showView(viewsIds[viewIndex]);
+	}
+});
+Homey.on('previousView', function(viewsIds){
+	var viewIndex = viewsIds.indexOf(options.id) - 1;
+	if(viewIndex >= 0){
+		Homey.showView(viewsIds[viewIndex]);
+	}
+});
+function nextView(){
+	if(options.next){
+		Homey.nextView();
+	}else{
+		Homey.emit('next');
+	}
+}
+</script>
+
+<div id="check_device_container">
+	<i class="loading fa fa-cog fa-spin"></i>
+</div>
+
+<script type="text/javascript">
+	Homey.emit('get_device', function (err, pairingDevice) {
+		Homey.emit('get_device', (pairingDevice || {}).data, function (err, device) {
+			if (device) {
+				$('#check_device_container').html(__(options.device_exists_message || "ir_generator.error.device_exists"));
+				return;
+			}
+			nextView();
+		})
+	});
+</script>

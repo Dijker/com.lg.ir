@@ -3,7 +3,7 @@
   "name": {
     "en": "LG TV IR"
   },
-  "version": "1.0.2",
+  "version": "1.0.3",
   "compatibility": ">=1.5.0",
   "author": {
     "name": "Athom B.V.",
@@ -207,6 +207,10 @@
         "large": "./ir_generator/assets/images/large.jpg"
       },
       "pair": [
+        {
+          "id": "generic_check_device",
+          "navigation": {}
+        },
         {
           "id": "generic_done",
           "navigation": {}

@@ -1,6 +1,6 @@
 <script>
 var options = {
-	template: '../lib/433/pair/done.html',
+	template: '../lib/pair/done.html',
 	id: 'generic_done',
 	title: 'views.generic_done.title'
 };
@@ -39,7 +39,6 @@ function nextView(){
 			var virtualDeviceClass;
 			$('.deviceclasses-list input:checked').each(function () {
 				if ($(this).attr('name').indexOf('"id":"' + device.data.id + '"') !== -1) {
-					console.log('hasVirtualDeviceClass@!');
 					virtualDeviceClass = $(this);
 				}
 			});
@@ -49,7 +48,8 @@ function nextView(){
 				device.virtualCapabilities = $(virtualDeviceClass).data('capabilities').split(',');
 			}
 
-			Homey.addDevice(device, function () {
+			Homey.addDevice(device, function (err) {
+				console.log('added device', device, err);
 				Homey.done();
 			});
 		});

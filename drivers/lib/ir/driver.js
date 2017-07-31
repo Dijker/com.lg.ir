@@ -2,20 +2,8 @@
 
 const BaseDriver = require('../BaseDriver');
 const Signal = require('./signal');
-const Animation = Homey.manager('ledring').Animation;
 const cmdSort = require('./cmdSort').reverse();
 const REG_STRIP_TYPES = new RegExp(/(.*\$~|~\$.*)/g);
-
-const disableLedringAnimation = new Animation({
-	options: {
-		fps: 1,
-		tfps: 1,
-		rpm: 0,
-	},
-	frames: [new Array(24).fill(({ r: 0, g: 0, b: 0 }))],
-	priority: 'CRITICAL',
-});
-disableLedringAnimation.register(() => null);
 
 module.exports = class Driver extends BaseDriver {
 	constructor(driverConfig) {
@@ -206,7 +194,7 @@ module.exports = class Driver extends BaseDriver {
 			this.logger.verbose(
 				'Driver:pair->get_device(data, callback)+this.pairingDevice', data, callback, this.pairingDevice
 			);
-			callback(null, this.pairingDevice);
+			callback(null, data && Object.keys(data).length ? this.getDevice(data) : this.pairingDevice);
 		});
 
 		socket.on('program_send', (data, callback) => {
@@ -301,14 +289,6 @@ module.exports = class Driver extends BaseDriver {
 			this.logger.verbose('Driver:pair->done(data, callback)+this.pairingDevice', data, callback, this.pairingDevice);
 			if (!this.pairingDevice) {
 				return callback(new Error('433_generator.error.no_device'));
-			}
-			if (this.pairingDevice.data.metadata) {
-				if (this.pairingDevice.data.metadata.cmdType) {
-					this.pairingDevice.data.cmdType = this.pairingDevice.data.metadata.cmdType;
-				}
-				if (this.pairingDevice.data.metadata.cmdSubType) {
-					this.pairingDevice.data.cmdSubType = this.pairingDevice.data.metadata.cmdSubType;
-				}
 			}
 			return callback(null, this.pairingDevice);
 		});

@@ -209,7 +209,7 @@ const config = {
 				},
 			],
 			pair: {
-				viewOrder: ['generic_done'],
+				viewOrder: ['generic_check_device', 'generic_done'],
 			},
 		},
 	},

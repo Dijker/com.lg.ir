@@ -165,6 +165,9 @@
 	"views": {
 		"generic_done": {
 			"title": "Apparaat wordt toegevoegd!\u0000"
+		},
+		"generic_check_device": {
+			"device_exists_message": "Apparaat bestaat al. Sluit aub. de pair wizard.\u0000"
 		}
 	}
 }

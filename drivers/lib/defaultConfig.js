@@ -270,6 +270,17 @@ module.exports = {
 				},
 			},
 		},
+		generic_check_device: {
+			template: './pair/check_device.html',
+			options: {
+				title: {
+					default: 'views.generic_done.title',
+				},
+				device_exists_message: {
+					default: 'views.generic_check_device.device_exists_message',
+				},
+			},
+		},
 		generic_done: {
 			template: './pair/done.html',
 			options: {
