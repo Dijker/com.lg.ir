@@ -2,4 +2,7 @@
 
 This app enables Homey to send IR remote signals to your LG TV. For now it is not possible to listen to signals of the remote.
 
-Currently this app is in Beta. When you experience a bug or issue please report it on the Github page here: https://github.com/athombv/com.lg.ir/issues
+# Changelog
+
+#### v1.1.0
+Increased default command repetitions to 5 (from 1) to ensure the signal is received by the tv.

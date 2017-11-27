@@ -22,7 +22,7 @@ const config = {
 			signal: {
 				id: 'lg_tv',
 				type: 'prontohex',
-				repetitions: 1,
+				repetitions: 5,
 				options: {
 					cmdNumberPrefix: 'DIGIT_',
 					minTxInterval: 250,
