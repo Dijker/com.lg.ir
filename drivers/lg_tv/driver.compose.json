@@ -1,0 +1,74 @@
+{
+	"$extends": [
+		"rf.ir_remote"
+	],
+	"name": {
+		"en": "LG TV Remote",
+		"nl": "LG TV Afstandsbediening"
+	},
+	"class": "tv",
+	"icon": "./assets/remote.svg",
+	"images": {
+		"small": "./assets/images/small.jpg",
+		"large": "./assets/images/large.jpg"
+	},
+	"capabilities": [
+		"onoff",
+		"volume_mute",
+		"volume_up",
+		"volume_down",
+		"channel_up",
+		"channel_down"
+	],
+	"rf": {
+		"signal": "lg_tv",
+		"minTxInterval": 1000,
+		"cmdNumberPrefix": "DIGIT_",
+		"capabilityToCommandMap": {
+			"onoff": {
+				"true": "POWER_ON",
+				"false": "POWER_OFF",
+				"toggle": "POWER_TOGGLE"
+			},
+			"volume_mute": {
+				"toggle": "MUTE_TOGGLE"
+			},
+			"volume_up": "VOLUME_UP",
+			"volume_down": "VOLUME_DOWN",
+			"channel_up": "CHANNEL_UP",
+			"channel_down": "CHANNEL_DOWN"
+		}
+	},
+	"$flow": {
+		"actions": [
+			{
+				"id": "{{driverId}}:send_cmd",
+				"title": {
+					"en": "Send Command",
+					"nl": "Verzend Commando"
+				},
+				"args": [
+					{
+						"name": "cmd",
+						"type": "autocomplete"
+					}
+				]
+			},
+			{
+				"id": "{{driverId}}:send_cmd_number",
+				"title": {
+					"en": "Set Channel",
+					"nl": "Zet op Kanaal"
+				},
+				"args": [
+					{
+						"name": "number",
+						"type": "number",
+						"min": 0,
+						"max": 9999
+					}
+				]
+			}
+		]
+	}
+}

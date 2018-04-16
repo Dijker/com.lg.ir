@@ -3,7 +3,8 @@
   "name": {
     "en": "LG TV IR"
   },
-  "version": "1.1.0",
+  "version": "2.0.0",
+  "sdk": 2,
   "compatibility": ">=1.5.3",
   "author": {
     "name": "Athom B.V.",
@@ -18,17 +19,100 @@
   "permissions": [
     "homey:wireless:ir"
   ],
+  "flow": {
+    "actions": [
+      {
+        "id": "lg_tv:send_cmd",
+        "title": {
+          "en": "Send Command",
+          "nl": "Verzend Commando"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=lg_tv"
+          },
+          {
+            "name": "cmd",
+            "type": "autocomplete"
+          }
+        ]
+      },
+      {
+        "id": "lg_tv:send_cmd_number",
+        "title": {
+          "en": "Set Channel",
+          "nl": "Zet op Kanaal"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=lg_tv"
+          },
+          {
+            "name": "number",
+            "type": "number",
+            "min": 0,
+            "max": 9999
+          }
+        ]
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "class": "tv",
+      "capabilities": [
+        "onoff",
+        "volume_mute",
+        "volume_up",
+        "volume_down",
+        "channel_up",
+        "channel_down"
+      ],
+      "pair": [
+        {
+          "id": "rf.done"
+        }
+      ],
+      "name": {
+        "en": "LG TV Remote",
+        "nl": "LG TV Afstandsbediening"
+      },
+      "icon": "./assets/remote.svg",
+      "images": {
+        "small": "./assets/images/small.jpg",
+        "large": "./assets/images/large.jpg"
+      },
+      "rf": {
+        "signal": "lg_tv",
+        "minTxInterval": 1000,
+        "cmdNumberPrefix": "DIGIT_",
+        "capabilityToCommandMap": {
+          "onoff": {
+            "true": "POWER_ON",
+            "false": "POWER_OFF",
+            "toggle": "POWER_TOGGLE"
+          },
+          "volume_mute": {
+            "toggle": "MUTE_TOGGLE"
+          },
+          "volume_up": "VOLUME_UP",
+          "volume_down": "VOLUME_DOWN",
+          "channel_up": "CHANNEL_UP",
+          "channel_down": "CHANNEL_DOWN"
+        }
+      },
+      "id": "lg_tv"
+    }
+  ],
   "signals": {
-    "433": {},
-    "868": {},
     "ir": {
       "lg_tv": {
         "type": "prontohex",
-        "repetitions": 5,
-        "options": {
-          "cmdNumberPrefix": "DIGIT_",
-          "minTxInterval": 250
-        },
+        "repetitions": 20,
         "cmds": {
           "POWER_TOGGLE": "0000 006D 0022 0002 0154 00A9 0014 0014 0014 0014 0014 0040 0014 0014 0014 0014 0014 0014 0014 0014 0014 0014 0014 0040 0014 0040 0014 0014 0014 0040 0014 0040 0014 0040 0014 0040 0014 0040 0014 0014 0014 0014 0014 0014 0014 0040 0014 0014 0014 0014 0014 0014 0014 0014 0014 0040 0014 0040 0014 0040 0014 0014 0014 0040 0014 0040 0014 0040 0014 0040 0014 0608 0154 0055 0014 0E4F",
           "POWER_ON": "0000 006d 0022 0002 0157 00ac 0015 0015 0015 0015 0015 0040 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0040 0015 0040 0015 0015 0015 0040 0015 0040 0015 0040 0015 0040 0015 0040 0015 0015 0015 0015 0015 0040 0015 0015 0015 0015 0015 0015 0015 0040 0015 0040 0015 0040 0015 0040 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0015 0015 0689 0157 0056 0015 0e94",
@@ -185,81 +269,5 @@
         }
       }
     }
-  },
-  "drivers": [
-    {
-      "id": "lg_tv",
-      "name": {
-        "en": "LG TV Remote",
-        "nl": "LG TV Afstandsbediening"
-      },
-      "class": "tv",
-      "capabilities": [
-        "onoff",
-        "volume_mute",
-        "volume_up",
-        "volume_down",
-        "channel_up",
-        "channel_down"
-      ],
-      "images": {
-        "small": "./ir_generator/assets/images/small.jpg",
-        "large": "./ir_generator/assets/images/large.jpg"
-      },
-      "pair": [
-        {
-          "id": "generic_check_device",
-          "navigation": {}
-        },
-        {
-          "id": "generic_done",
-          "navigation": {}
-        }
-      ]
-    }
-  ],
-  "flow": {
-    "triggers": [],
-    "conditions": [],
-    "actions": [
-      {
-        "id": "lg_tv:send_cmd",
-        "title": {
-          "en": "Send Command\u0000",
-          "nl": "Verzend Commando\u0000"
-        },
-        "args": [
-          {
-            "name": "cmd",
-            "type": "autocomplete"
-          },
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=lg_tv"
-          }
-        ]
-      },
-      {
-        "id": "lg_tv:send_cmd_number",
-        "title": {
-          "en": "Set Channel\u0000",
-          "nl": "Zet op Kanaal\u0000"
-        },
-        "args": [
-          {
-            "name": "number",
-            "type": "number",
-            "min": "0",
-            "max": "9999"
-          },
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=lg_tv"
-          }
-        ]
-      }
-    ]
   }
 }
