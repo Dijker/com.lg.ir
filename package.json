@@ -1,0 +1,23 @@
+{
+  "name": "com.lg.ir",
+  "version": "1.0.0",
+  "description": "This app enables Homey to send IR remote signals to your LG TV. For now it is not possible to listen to signals of the remote.",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/athombv/com.lg.ir.git"
+  },
+  "author": "Athom B.V.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/athombv/com.lg.ir/issues"
+  },
+  "homepage": "https://github.com/athombv/com.lg.ir#readme",
+  "dependencies": {
+    "homey-log": "^1.0.5",
+    "homey-rfdriver": "^2.0.13"
+  }
+}
