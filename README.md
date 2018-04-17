@@ -5,8 +5,9 @@ This app enables Homey to send IR remote signals to your LG TV. For now it is no
 # Changelog
 
 #### v2.0.0
-Rewrite to SDK2
+Rewrite to SDK2.
 Increased command repetitions to 10 and set repetitions for volume up/down to 2.
+Added the ENTER command to be send after the "Set Channel" action card.
 
 #### v1.1.0
 Increased default command repetitions to 5 (from 1) to ensure the signal is received by the tv.

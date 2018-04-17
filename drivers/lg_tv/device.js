@@ -20,4 +20,11 @@ module.exports = RFDevice => class MyDevice extends RFDevice {
 		return options;
 	}
 
+	onFlowActionSendCmdNumber(...args){
+		return super.onFlowActionSendCmdNumber(...args)
+			.then(() =>
+				this.sendCmd('ENTER')
+			);
+	}
+
 };

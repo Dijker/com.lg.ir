@@ -22,7 +22,7 @@
 	],
 	"rf": {
 		"signal": "lg_tv",
-		"minTxInterval": 1000,
+		"minTxInterval": 900,
 		"cmdNumberPrefix": "DIGIT_",
 		"capabilityToCommandMap": {
 			"onoff": {
